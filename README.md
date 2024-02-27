@@ -117,7 +117,7 @@ Script cache:clear --no-warmup returned with error code 255
 # .envファイルを作成
 # 注意　環境変数などは、やり方によりますが、.envに記載ではなく、別のdocker-compose.ymlに記載することもあります。
 
-# eccube利用データベース作成し、初期テーブルも作成する
+# eccube install
 php bin/console e:i --no-interaction
 
 # schema-update:
@@ -127,10 +127,34 @@ php bin/console doctrine:schema:update --dump-sql
 php bin/console doctrine:schema:update --force
 php bin/console doctrine:migrations:migrate --no-interaction
 php bin/console cache:clear --no-warmup
+
+# init-setup
+php bin/console customize:initialize:setup
+
+# plugin-install
+php bin/console eccube:plugin:install --code="ProductReview42"
+php bin/console eccube:plugin:enable --code="ProductReview42"
+
+php bin/console eccube:plugin:install --code="GmoPaymentGateway42"
+php bin/console eccube:plugin:enable --code="GmoPaymentGateway42"
+
+php bin/console eccube:plugin:install --code="GmoPsKb4"
+php bin/console eccube:plugin:enable --code="GmoPsKb4"
+
+php bin/console eccube:plugin:install --code="Coupon42"
+php bin/console eccube:plugin:enable --code="Coupon42"
+
+php bin/console eccube:plugin:install --code="MailMagazine42"
+php bin/console eccube:plugin:enable --code="MailMagazine42"
+
+php bin/console eccube:plugin:install --code="ProductOption42"
+php bin/console eccube:plugin:enable --code="ProductOption42"
+
 ```
+
 ## Ec-cube動作確認
 以下リンクをたたいて、画面表示できればOKです。
-※npm installが上手くいかず、すこし画面崩れがあるかもしれないが、性能テストのため、無視します。
+
 ```
 http://localhost:8080/
 ```
