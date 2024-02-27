@@ -98,7 +98,12 @@ cp -r 既存Eccubeソース ./www/html/
 
 # composerなど実行
 cd ./www/html/
-composer install
+
+# Install Symfony Components
+composer require symfony/apache-pack
+composer require symfony/orm-pack
+# composer require --dev symfony/maker-bundle
+
 npm install
 
 # 以下エラー起きます
