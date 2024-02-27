@@ -62,6 +62,15 @@ RUN wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O /usr/loca
 # ダウンロードしたファイルのパーミッションを変更
 RUN chmod +x /usr/local/bin/cloud_sql_proxy
 
+# APC
+RUN pecl install apcu && echo "extension=apcu.so" > /usr/local/etc/php/conf.d/apc.ini
+
+# Node.js 12.x
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
+    && apt update \
+    && apt install -y nodejs \
+    && apt clean
+
 # modRewriteを有効化する
 RUN mv /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled
 RUN /bin/sh -c a2enmod rewrite

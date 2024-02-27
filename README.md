@@ -96,9 +96,10 @@ gcloud sdk利用できる環境に、既存のeccubeソースを持ってきて�
 # ソースコピー
 cp -r 既存Eccubeソース ./www/html/
 
-# composer実行
+# composerなど実行
 cd ./www/html/
 composer install
+npm install
 
 # 以下エラー起きます
 Executing script cache:clear --no-warmup [KO]
@@ -113,6 +114,23 @@ Script cache:clear --no-warmup returned with error code 255
 !!    thrown in /var/www/html/vendor/vlucas/phpdotenv/src/Store/FileStore.php on line 68
 !!
 
-# 
-```
+# .envファイルを作成
+# 注意　環境変数などは、やり方によりますが、.envに記載ではなく、別のdocker-compose.ymlに記載することもあります。
 
+# eccube利用データベース作成し、初期テーブルも作成する
+php bin/console e:i --no-interaction
+
+# schema-update:
+php bin/console cache:clear --no-warmup
+php bin/console eccube:generate:proxies
+php bin/console doctrine:schema:update --dump-sql
+php bin/console doctrine:schema:update --force
+php bin/console doctrine:migrations:migrate --no-interaction
+php bin/console cache:clear --no-warmup
+```
+## Ec-cube動作確認
+以下リンクをたたいて、画面表示できればOKです。
+※npm installが上手くいかず、すこし画面崩れがあるかもしれないが、性能テストのため、無視します。
+```
+http://localhost:8080/
+```
