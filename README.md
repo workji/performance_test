@@ -137,21 +137,27 @@ php bin/console cache:clear --no-warmup
 php bin/console customize:initialize:setup
 
 # plugin-install
+# ProductReview42
 php bin/console eccube:plugin:install --code="ProductReview42"
 php bin/console eccube:plugin:enable --code="ProductReview42"
 
+# GmoPaymentGateway42
 php bin/console eccube:plugin:install --code="GmoPaymentGateway42"
 php bin/console eccube:plugin:enable --code="GmoPaymentGateway42"
 
+# GmoPsKb4
 php bin/console eccube:plugin:install --code="GmoPsKb4"
 php bin/console eccube:plugin:enable --code="GmoPsKb4"
 
+# Coupon42
 php bin/console eccube:plugin:install --code="Coupon42"
 php bin/console eccube:plugin:enable --code="Coupon42"
 
+# MailMagazine42
 php bin/console eccube:plugin:install --code="MailMagazine42"
 php bin/console eccube:plugin:enable --code="MailMagazine42"
 
+# ProductOption42
 php bin/console eccube:plugin:install --code="ProductOption42"
 php bin/console eccube:plugin:enable --code="ProductOption42"
 
