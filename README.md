@@ -125,6 +125,13 @@ Script cache:clear --no-warmup returned with error code 255
 # eccube install
 php bin/console e:i --no-interaction
 
+# db server性能低い時、以下のようなtimeoutエラーになる可能性あり
+# The process "'bin/console' 'eccube:fixtures:load'" exceeded the timeout of 60 seconds.
+# もしtimeout errorの場合、初期化処理を分けて、以下コマンドを実行
+php bin/console doctrine:schema:drop --force --no-interaction
+php bin/console doctrine:schema:create --no-interaction
+php bin/console eccube:fixtures:load --no-interaction
+
 # schema-update:
 php bin/console cache:clear --no-warmup
 php bin/console eccube:generate:proxies
