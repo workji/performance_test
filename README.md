@@ -169,3 +169,10 @@ php bin/console eccube:plugin:enable --code="ProductOption42"
 ```
 http://localhost:8080/
 ```
+
+実行したSQLの取得方法
+```shell
+# mysql server
+tail -f /var/log/mysql/mysqld.log
+```
+
