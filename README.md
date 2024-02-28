@@ -168,11 +168,15 @@ php bin/console eccube:plugin:enable --code="MailMagazine42"
 php bin/console eccube:plugin:install --code="ProductOption42"
 php bin/console eccube:plugin:enable --code="ProductOption42"
 
+# 独自のリソース適用する
+cp /anywhere/gcs-auth.json ./
 ```
 
 ## Ec-cube動作確認
 以下リンクをたたいて、画面表示できればOKです。
 
+上記手順通りに実施すれば、画面崩れなしで表示されるはず<br>
+もし画面崩れあれば、init-setupとplugin-installを順番に実施し直すことを試す
 ```
 http://localhost:8080/
 ```
